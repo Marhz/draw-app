@@ -1,0 +1,37 @@
+.home-screen {
+    max-width: 1000px;
+    /* height: 1000px; */
+    margin: auto;
+    padding: 20px;
+}
+
+.home-screen input {
+    width: 100%;
+    font-size: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.home-screen label {
+    font-size: 30px;
+}
+
+.home-screen button {
+    width: 100%;
+    font-size: 30px;
+    height: 50px;
+    display: block;
+    background: #4aa0f0;
+    border: none;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.home-screen button:hover {
+    background: #1f79ce;
+}
+
+.home-screen button:active {
+    transform: translateY(1px);
+    border-top: solid 3px #1f79ce;
+}

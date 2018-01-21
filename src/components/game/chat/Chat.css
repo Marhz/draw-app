@@ -1,0 +1,35 @@
+.chat-container {
+    border: 1px solid blue;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    padding: 0;
+    margin: 10px;
+    border: 1px solid green;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.message {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    list-style: none;
+    text-align: left;
+}
+
+.form {
+    margin: 10px;
+    padding: 10px;
+    margin-top: auto;
+    display: flex;
+}
+
+textarea {
+    flex-grow: 1;
+    width: auto;
+    height: 50px;
+}
