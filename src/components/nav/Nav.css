@@ -3,6 +3,11 @@
     background: green;
     padding: 10px;
     align-items: center;
+    margin-bottom: 40px;
+}
+
+.nav h1, .nav ul {
+    margin: 0;
 }
 
 .links {
@@ -16,4 +21,10 @@
 
 .player {
     margin-left: auto;
+}
+
+@media (max-width: 900px) {
+    .nav {
+        margin-bottom: 0;
+    }
 }

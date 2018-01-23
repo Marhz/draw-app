@@ -12,7 +12,7 @@ class Chat extends Component {
     }
     render() {
         const messages = this.state.messages.map((message, i) => {
-            return <li key={i} className="message">{message}</li>
+            return <li key={i} className="message"><b className="message-username">{message.userName}: </b>{message.content}</li>
         })
         return (
             <div className="chat-container">
@@ -27,8 +27,9 @@ class Chat extends Component {
     }
     componentDidMount() {
         socket.on('message', message => {
+            console.log(message)
             const messages = [...this.state.messages];
-            if (messages.length > 10) {
+            if (messages.length >= 10) {
                 messages.shift()
             }
             messages.push(message);
@@ -37,7 +38,7 @@ class Chat extends Component {
         socket.on('current_chat', messages => {
             this.setState({messages: messages}, this.scrollChat);
         });
-        socket.emit('get_current_chat');
+        socket.emit('get_current_chat', this.props.gameId);
     }
 
     componentWillUnmount() {
@@ -61,7 +62,7 @@ class Chat extends Component {
     }
     submit = () => {
         if(this.state.currentMessage.length === 0) return;
-        socket.emit('new_message', this.state.currentMessage);
+        socket.emit('new_message', {content: this.state.currentMessage, gameId: this.props.gameId, userId: this.props.user.id});
         this.setState({currentMessage: ''});
     }
 }

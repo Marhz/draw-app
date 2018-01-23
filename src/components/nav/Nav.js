@@ -13,7 +13,7 @@ class Nav extends Component {
     }
 
     getName() {
-        return this.props.player === null ? 'Guest' : this.props.player;
+        return this.props.player.id === null ? 'Guest' : this.props.player.name;
     }
 
     render() {
@@ -26,6 +26,7 @@ class Nav extends Component {
                     <li><Link to="/game">Game</Link></li>
                 </ul>
                 <div className="player">
+                    <button onClick={this.props.disconnect}>disconnect</button>
                     {this.getName()}
                 </div>
             </nav>

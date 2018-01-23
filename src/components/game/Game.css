@@ -1,0 +1,51 @@
+.game {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: start; */
+    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 100%;
+    /* max-width: 1300px; */
+    background: white;
+    margin: auto;
+    /* padding: 10px 10px; */
+    border-radius: 20px;
+}
+
+.canvas-controls {
+    /* width: 10%; */
+    /* width: 4rem; */
+}
+
+.chat {
+    /* width: 100%; */
+    width: 200px;
+    height: 100%;
+    align-self: flex-end;
+    justify-self: end;
+}
+.canvas-controls button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.1rem;
+}
+
+@media (max-width: 900px) {
+    .game {
+        flex-flow: column;
+    }
+    .game-container {
+        width: 100%;
+    }
+    .chat {
+        width: 100%;
+    }
+    .canvas-controls {
+        width: 100%;
+    }
+    .canvas-controls hr {
+        display: none;
+    }
+}
+
+@media (max-width: )

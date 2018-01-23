@@ -14,27 +14,48 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
-      id: null
+      user: {
+        name: null,
+        id: null
+      }
     };
-    socket.on('registration_infos', infos => {
-      console.log(infos);
-      this.setState({name: infos.name, id: infos.id});
+    socket.on('registration_infos', user => {
+      localStorage.setItem('user', JSON.stringify(user));
+      this.setState({user: user});
     })
   }
+
+  componentDidMount() {
+    const user = localStorage.getItem('user');
+    if (user !== null) {
+      this.setState({ user: JSON.parse(user) });
+    }
+  }
+
+  disconnect = () => {
+    localStorage.removeItem('user');
+    this.setState({user: {
+      id: null,
+      name: null
+    }});
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <Nav player={this.state.name} />
+          <Nav player={this.state.user} disconnect={this.disconnect}/>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={(props) => (
+              <Home {...props} user={this.state.user} />
+            )}/>
+            <Route path="/game/:id" render={(props) => (
+              <Game {...props} user={this.state.user} />
+            )}/>
             <Route path="/game" component={Game} />
             <Route path="/hello" render={() => {
               return (
-                <div className="jumbotron">
-                  <h1 className="display-3">Hello, world!</h1>
-                </div>
+                <h1 className="display-3">Hello, world!</h1>
               );
             }} />
           </Switch>
